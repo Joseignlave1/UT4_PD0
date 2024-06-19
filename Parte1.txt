@@ -1,0 +1,42 @@
+UT4_PD0
+
+Parte1:
+
+Tengo nodos internos(que tienen hijos, uno o ambos), que representan operadores aritméticos.
+
+Tengo nodos hojas, que representan constantes(números) o variables(como letras)
+
+
+Lenguaje Natural:
+
+recorremos el arbol en postorden primero para encontrar las hojas, al encontrar una hoja, evaluamos si esa hoja es una constante, o una variable, si es una variable, sustituimos su valor por el pasado por parámetro, hacemos eso en cada paso hasta sustituir todas las hojas que cumplen con esas caracteríscias.
+
+Después recorremos nuevamente el arbol en postorden, evaluando las hojas y realizando las operaciones aritméticas correspondientes(suma, resta, division y multiplicación), calculamos el resultado y lo devolvemos
+
+pre Condiciones:
+
+El Arbol no puede estar vacío.
+
+Los nodos internos deben representar operadores aritméticos
+
+Los nodos hojas, deben representar constantes(números) o variables(letras)
+
+
+tElemento.expresionArit(Nodo raiz, int caracterVariable)
+
+//Primero recorremos el arbol en postOrden
+
+nodoPrimero = raíz
+ si(nodoPrimero.hijoIzquierdo <> nulo)
+    nodoPrimero.hijoIzquierdo.expresionArit(nodoPrimero.hijoIzquierdo, int caracterVariable)
+ fin Si
+ 
+ si(nodoPrimero.hijoDerecho <> nulo)
+   nodoPrimerohijoDerecho.expresionArit(nodoPrimero.hijoDerecho, caracterVariable)
+ fin Si
+
+ si(nodoPrimero.hijoIzquierdo y nodoPrimero.hijoDerecho = nulo) //Es una hoja
+    si(nodoPrimero.etiqueta <> numero)
+       nodoPrimero.etiqueta = caracterVariable
+    fin Si
+ fin Si
